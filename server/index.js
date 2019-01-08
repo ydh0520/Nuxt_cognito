@@ -33,3 +33,10 @@ async function start() {
   })
 }
 start()
+
+app.post('/',function(req,res){
+  consola.log("request")
+  res.json({
+    token:'test_token'
+  })
+})
