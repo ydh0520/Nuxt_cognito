@@ -1,6 +1,6 @@
-# aws_cognito
+# Nuxt_cognito
 
-> practice using cognito
+> Nuxt.js aws-cognito 연동
 
 ## Build Setup
 
