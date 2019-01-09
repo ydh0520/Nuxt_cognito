@@ -1,3 +1,4 @@
+require('dotenv').config()
 import {
     AuthenticationDetails,
     CognitoUser,
@@ -5,3 +6,9 @@ import {
     CognitoUserPool,
     CookieStorage,
 } from 'amazon-cognito-identity-js';
+
+
+// const userPool=new CognitoUserPool({
+//     process.env.userPool,
+//     process.env.clientid
+// })
