@@ -1,3 +1,4 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const pkg = require('./package')
 
 module.exports = {
@@ -62,5 +63,9 @@ module.exports = {
     extend(config, ctx) {
       
     }
+  },
+  env:{
+    userpool:process.env.COGNITO_USER_POOL_ID,
+    clientid:process.env.COGNITO_CLIENT_ID
   }
 }
