@@ -1,5 +1,4 @@
 require('dotenv').config()
-
 import {
     AuthenticationDetails,
     CognitoUser,
@@ -8,6 +7,7 @@ import {
     CookieStorage,
 } from 'amazon-cognito-identity-js';
 
+<<<<<<< HEAD
 const UserPoolId = process.env.COGNITO_USER_POOL_ID;
 const ClientId = process.env.COGNITO_CLIENT_ID;
 
@@ -101,6 +101,10 @@ export default{
         var params={
             AccessToken: accessToken
         }
+=======
+>>>>>>> parent of bab25c6... cognito script
 
-    }
-}
+// const userPool=new CognitoUserPool({
+//     process.env.userPool,
+//     process.env.clientid
+// })
