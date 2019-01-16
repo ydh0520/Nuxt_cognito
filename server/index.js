@@ -6,8 +6,12 @@ const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
-app.set('port', port)
+const bodyParser=require('body-parser')
+const cognito=require('./cognito.js')
+global.fetch=require('node-fetch')
 
+app.set('port', port)
+app.use(bodyParser.json())
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -38,5 +42,21 @@ app.post('/',function(req,res){
   consola.log("request")
   res.json({
     token:'test_token'
+  })
+})
+
+app.post('/login',async function(req,res){
+  const id = req.body.id;
+  const password=req.body.password;
+  
+  cognito.signUp(id,password).then(
+    function(result){
+      res.json({
+        token:result
+      })
+  },function(err){
+    res.json({
+      token:err
+    })
   })
 })
