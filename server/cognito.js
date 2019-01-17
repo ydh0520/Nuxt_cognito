@@ -49,8 +49,21 @@ exports.signUp=function(id,password){
     });
 }
 
-exports.verify=function(){
-
+exports.verify=function(id,verifycode){
+    const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+        Username:id,
+        Pool:userPool
+    });
+    return new Promise(function (resolve, reject) {
+        cognitoUser.confirmRegistration(verifycode, true, function(err, result) {
+            if (err) {
+                reject(err);
+            }else{
+                resolve(result);
+            }
+        });
+    });
+    
 }
 
 exports.logIn=async function(id,password){  
