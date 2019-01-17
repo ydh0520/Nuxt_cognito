@@ -50,11 +50,11 @@ app.post('/login',(req,res)=>{
   const password=req.body.password;
   
   cognito.signUp(id,password).then(
-    function(result){
+    (result)=>{
       res.json({
         token:result
       })
-  },function(err){
+  },(err)=>{
     res.json({
       token:err
     })
@@ -66,10 +66,10 @@ app.post('/verify',(req,res)=>{
   const verifyCode=req.body.verifyCode;
 
   cognito.verify(id,verifycode).then(
-    function(result){
+    (result)=>{
 
     },
-    function(err){
+    (err)=>{
       
     }
   )
