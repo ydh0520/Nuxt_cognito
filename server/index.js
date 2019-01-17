@@ -45,7 +45,7 @@ app.post('/',function(req,res){
   })
 })
 
-app.post('/login',async function(req,res){
+app.post('/login',(req,res)=>{
   const id = req.body.id;
   const password=req.body.password;
   
@@ -59,4 +59,18 @@ app.post('/login',async function(req,res){
       token:err
     })
   })
+})
+
+app.post('/verify',(req,res)=>{
+  const id=req.body.id;
+  const verifyCode=req.body.verifyCode;
+
+  cognito.verify(id,verifycode).then(
+    function(result){
+
+    },
+    function(err){
+      
+    }
+  )
 })
