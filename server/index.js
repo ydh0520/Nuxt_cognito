@@ -45,11 +45,28 @@ app.post('/',function(req,res){
   })
 })
 
+app.post('/signUp',(req,res)=>{
+  const id=req.body.id;
+  const password=req.body.password;
+
+  cognito.signUp(id,password).then(
+    (result)=>{
+      res.json({
+        token:result
+      })
+    },(err)=>{
+      res.json({
+        token:err
+      })
+    }
+  )
+})
+
 app.post('/login',(req,res)=>{
   const id = req.body.id;
   const password=req.body.password;
   
-  cognito.signUp(id,password).then(
+  cognito.logIn(id,password).then(
     (result)=>{
       res.json({
         token:result
