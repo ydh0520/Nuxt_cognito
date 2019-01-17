@@ -12,10 +12,12 @@
         <div v-if="type==1">
             <input type="text" v-model="id">
             <input type="password" v-model="password">
-            <input type="text">
+            <input type="text" v-model="verifyCode">
             <input type="text">
             <input type="text">
             <button @click="signUp()">가입하기</button>
+            <button @click="verify()">인증하기</button>
+            <button @click="type=0">로그인으로</button>
         </div>
         <!-- 비밀번호 찾기 창 -->
         <div v-if="type==2">
@@ -34,8 +36,8 @@ export default {
     data(){
         return{
             type:0,
-            id:'',
-            password:'',
+            id:'ydh2338@naver.com',
+            password:'aaaa1234',
             verifyCode:''
         }
     },
@@ -45,7 +47,7 @@ export default {
                 id:this.id,
                 password:this.password
             }).then((result)=>{
-
+                console.log(result)
             })
         },
         signUp(){
@@ -53,7 +55,15 @@ export default {
                 id:this.id,
                 password:this.password
             }).then((result)=>{
-
+                console.log(result)
+            })
+        },
+        verify(){
+            axios.post('/verify',{
+                id:this.id,
+                verifyCode:this.verifyCode
+            }).then((result)=>{
+                console.log(result)
             })
         }
     }

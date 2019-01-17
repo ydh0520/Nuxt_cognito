@@ -55,6 +55,7 @@ app.post('/signUp',(req,res)=>{
         token:result
       })
     },(err)=>{
+      console.log(err)
       res.json({
         token:err
       })
@@ -82,7 +83,7 @@ app.post('/verify',(req,res)=>{
   const id=req.body.id;
   const verifyCode=req.body.verifyCode;
 
-  cognito.verify(id,verifycode).then(
+  cognito.verify(id,verifyCode).then(
     (result)=>{
       res.json({
         token:result
