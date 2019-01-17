@@ -67,10 +67,14 @@ app.post('/verify',(req,res)=>{
 
   cognito.verify(id,verifycode).then(
     (result)=>{
-
+      res.json({
+        token:result
+      })
     },
     (err)=>{
-      
+      res.json({
+        token:err
+      })
     }
   )
 })
