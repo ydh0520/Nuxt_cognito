@@ -66,7 +66,7 @@ exports.verify=function(id,verifycode){
     
 }
 
-exports.logIn=async function(id,password){  
+exports.logIn=function(id,password){  
     const authenticationData = {
         Username : id,
         Password : password,
