@@ -76,17 +76,16 @@ exports.logIn=function(id,password){
         Username:id,
         Pool:userPool
     };
-    
     const cognitoUser=new AmazonCognitoIdentity.CognitoUser(userData);
     return new Promise(function(reslove,reject){
-        console.log(authenticationDetails)
-        cognitoUser.authenticateUser(authenticationDetails,{
+        const result = cognitoUser.authenticateUser(authenticationDetails,{
             onSuccess(result){
-                const accessToken = result.getAccessToken().getJwtToken();
-                reslove(accessToken);
+                console.log('Success')
+                console.log(result)
             },
             onFailure(err){
-                reject(err);
+                console.log('Error')
+                console.log(err)
             }
         });
     })

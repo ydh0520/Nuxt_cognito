@@ -8,7 +8,9 @@ const port = process.env.PORT || 3000
 
 const bodyParser=require('body-parser')
 const cognito=require('./cognito.js')
-global.fetch=require('node-fetch')
+
+const fetch = require('node-fetch')
+global.fetch = global.fetch || fetch
 
 app.set('port', port)
 app.use(bodyParser.json())
